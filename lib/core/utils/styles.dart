@@ -13,7 +13,6 @@ class Styles {
     fontSize: 16,
     fontFamily: 'Manrope',
     fontWeight: FontWeight.w500,
-    height: 0.09,
   );
   static const TextStyle style16Regular = TextStyle(
     color: Color(0xFF0C141C),
@@ -23,10 +22,9 @@ class Styles {
     height: 0.09,
   );
   static const TextStyle style16Bold = TextStyle(
-    color: Color(0xFF0C141C),
+    color: Color(0xFFF7F9FC),
     fontSize: 16,
     fontFamily: 'Manrope',
     fontWeight: FontWeight.w700,
-    height: 0.09,
   );
 }
