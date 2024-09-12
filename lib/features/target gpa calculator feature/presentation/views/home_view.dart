@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:target_gpa_calculator_pedro/core/utils/styles.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -9,16 +10,7 @@ class HomeView extends StatelessWidget {
       appBar: AppBar(
         elevation: 2,
         centerTitle: true,
-        title: const Text(
-          'Target Gpa Calculator',
-          style: TextStyle(
-            color: Color(0xFF0C141C),
-            fontSize: 28,
-            fontFamily: 'Manrope',
-            fontWeight: FontWeight.w700,
-            height: 0.04,
-          ),
-        ),
+        title: const Text('Target Gpa Calculator', style: Styles.style28),
       ),
     );
   }
