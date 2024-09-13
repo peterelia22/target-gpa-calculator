@@ -10,11 +10,9 @@ import '../../../../../core/widgets/custom_text_field.dart';
 import 'custom_modal_bottom_sheet.dart';
 
 class HomeViewBody extends StatelessWidget {
-  final TextEditingController currentGpaController = TextEditingController();
-  final TextEditingController targetGpaController = TextEditingController();
-  final TextEditingController desiredHoursController = TextEditingController();
-  final TextEditingController earnedHoursController = TextEditingController();
+  // Define the list of fields here
   List<CustomTextFieldModel> fields = const [];
+
   HomeViewBody({super.key})
       : fields = [
           CustomTextFieldModel(
@@ -40,25 +38,15 @@ class HomeViewBody extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
-          CustomTextField(
-            controller: currentGpaController,
-            title: 'Current GPA',
-            hint: 'Enter GPA',
-          ),
-          CustomTextField(
-            controller: targetGpaController,
-            title: 'Target GPA',
-            hint: 'Enter GPA',
-          ),
-          CustomTextField(
-            controller: desiredHoursController,
-            title: 'Desired GPA Hours',
-            hint: 'Enter hours',
-          ),
-          CustomTextField(
-            controller: earnedHoursController,
-            title: 'Earned Hours',
-            hint: 'Enter hours',
+          Column(
+            children: List.generate(fields.length, (index) {
+              final field = fields[index];
+              return CustomTextField(
+                title: field.title,
+                hint: field.hint,
+                controller: field.controller,
+              );
+            }),
           ),
           SizedBox(
             height: 12,
@@ -67,59 +55,42 @@ class HomeViewBody extends StatelessWidget {
             onTap: () {
               bool isValid = true;
 
-              if (currentGpaController.text.isEmpty) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  buildSnackBar('Please enter your Current GPA'),
-                );
-                isValid = false;
-              } else if (!isValidDouble(currentGpaController.text)) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  buildSnackBar('Invalid Current GPA value'),
-                );
-                isValid = false;
-              }
+              // Validate each field dynamically
+              for (var field in fields) {
+                if (field.controller.text.isEmpty) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    buildSnackBar('Please enter your ${field.title}'),
+                  );
+                  isValid = false;
+                  break;
+                }
 
-              if (targetGpaController.text.isEmpty) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  buildSnackBar('Please enter your Target GPA'),
-                );
-                isValid = false;
-              } else if (!isValidDouble(targetGpaController.text)) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  buildSnackBar('Invalid Target GPA value'),
-                );
-                isValid = false;
-              }
+                // Check GPA fields for valid double
+                if (field.title.contains('GPA') &&
+                    !isValidDouble(field.controller.text)) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    buildSnackBar('Invalid ${field.title} value'),
+                  );
+                  isValid = false;
+                  break;
+                }
 
-              if (desiredHoursController.text.isEmpty) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  buildSnackBar('Please enter Desired GPA Hours'),
-                );
-                isValid = false;
-              } else if (!isValidInt(desiredHoursController.text)) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  buildSnackBar('Invalid Desired GPA Hours value'),
-                );
-                isValid = false;
-              }
-
-              if (earnedHoursController.text.isEmpty) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  buildSnackBar('Please enter Earned Hours'),
-                );
-                isValid = false;
-              } else if (!isValidInt(earnedHoursController.text)) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  buildSnackBar('Invalid Earned Hours value'),
-                );
-                isValid = false;
+                // Check hours fields for valid int
+                if (field.title.contains('Hours') &&
+                    !isValidInt(field.controller.text)) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    buildSnackBar('Invalid ${field.title} value'),
+                  );
+                  isValid = false;
+                  break;
+                }
               }
 
               if (isValid) {
-                double currentGpa = double.parse(currentGpaController.text);
-                double targetGpa = double.parse(targetGpaController.text);
-                int desiredHours = int.parse(desiredHoursController.text);
-                int earnedHours = int.parse(earnedHoursController.text);
+                double currentGpa = double.parse(fields[0].controller.text);
+                double targetGpa = double.parse(fields[1].controller.text);
+                int desiredHours = int.parse(fields[2].controller.text);
+                int earnedHours = int.parse(fields[3].controller.text);
 
                 double desiredGpa =
                     ((targetGpa * (earnedHours + desiredHours)) -
@@ -138,7 +109,6 @@ class HomeViewBody extends StatelessWidget {
                   },
                 );
               } else {
-                // Optional: Show a SnackBar summarizing that all fields are invalid
                 ScaffoldMessenger.of(context).showSnackBar(
                   buildSnackBar('Please fill in all fields correctly.'),
                 );
