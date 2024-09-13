@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 
 class CustomModalBottomSheet extends StatelessWidget {
-  const CustomModalBottomSheet({super.key});
+  final double desiredGpa;
+  const CustomModalBottomSheet({super.key, required this.desiredGpa});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      body: Text("you need gpa = ${desiredGpa.toString()}"),
+    );
   }
 }

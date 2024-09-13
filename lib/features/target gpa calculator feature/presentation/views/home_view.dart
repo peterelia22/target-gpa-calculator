@@ -14,7 +14,7 @@ class HomeView extends StatelessWidget {
         centerTitle: true,
         title: const Text('Target Gpa Calculator', style: Styles.style28),
       ),
-      body: const HomeViewBody(),
+      body: HomeViewBody(),
     );
   }
 }

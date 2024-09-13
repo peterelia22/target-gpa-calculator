@@ -5,10 +5,12 @@ import '../utils/styles.dart';
 class CustomTextField extends StatelessWidget {
   final String title;
   final String hint;
+  final TextEditingController controller;
   const CustomTextField({
     super.key,
     required this.title,
     required this.hint,
+    required this.controller,
   });
 
   @override
@@ -24,6 +26,7 @@ class CustomTextField extends StatelessWidget {
           ),
           const SizedBox(height: 8.0),
           TextField(
+            controller: controller,
             decoration: InputDecoration(
               hintText: hint,
               hintStyle: Styles.style16Regular,
