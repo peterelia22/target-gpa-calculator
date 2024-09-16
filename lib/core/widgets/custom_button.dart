@@ -15,7 +15,7 @@ class CustomButton extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 20),
       clipBehavior: Clip.antiAlias,
       decoration: ShapeDecoration(
-        color: const Color(0xFF197FE5),
+        gradient: Styles.darkGradient,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
         ),

@@ -2,20 +2,26 @@ import 'package:flutter/material.dart';
 
 class Styles {
   static const TextStyle style28 = TextStyle(
-    color: Color(0xFF0C141C),
+    color: Colors.white,
     fontSize: 28,
     fontFamily: 'Manrope',
     fontWeight: FontWeight.w700,
-    height: 0.04,
+    //  height: 0.04,
   );
   static const TextStyle style16Medium = TextStyle(
-    color: Color(0xFF0C141C),
+    color: Colors.white,
     fontSize: 16,
     fontFamily: 'Manrope',
     fontWeight: FontWeight.w500,
   );
+  static const TextStyle style20Medium = TextStyle(
+    color: Colors.white,
+    fontSize: 20,
+    fontFamily: 'Manrope',
+    fontWeight: FontWeight.w500,
+  );
   static const TextStyle style16Regular = TextStyle(
-    color: Color(0xFF0C141C),
+    color: Colors.white,
     fontSize: 16,
     fontFamily: 'Manrope',
     fontWeight: FontWeight.w400,
@@ -26,5 +32,10 @@ class Styles {
     fontSize: 16,
     fontFamily: 'Manrope',
     fontWeight: FontWeight.w700,
+  );
+  static LinearGradient darkGradient = LinearGradient(
+    colors: [Colors.black, const Color.fromARGB(255, 8, 38, 83)!],
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
   );
 }

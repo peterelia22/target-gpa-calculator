@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:target_gpa_calculator_pedro/core/utils/styles.dart';
-import 'package:target_gpa_calculator_pedro/features/target%20gpa%20calculator%20feature/presentation/views/widgets/home_view_body.dart';
+
+import '../../../../core/utils/styles.dart';
+import 'widgets/home_view_body.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -8,13 +9,21 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xfff7fafc),
-      appBar: AppBar(
-        elevation: 0,
-        centerTitle: true,
-        title: const Text('Target Gpa Calculator', style: Styles.style28),
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: Styles.darkGradient,
+        ),
+        child: Column(
+          children: [
+            AppBar(
+              backgroundColor: Colors.transparent,
+              centerTitle: true,
+              title: const Text('Target Gpa Calculator', style: Styles.style28),
+            ),
+            Expanded(child: HomeViewBody()),
+          ],
+        ),
       ),
-      body: HomeViewBody(),
     );
   }
 }
