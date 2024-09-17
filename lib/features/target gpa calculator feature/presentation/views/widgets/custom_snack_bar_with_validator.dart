@@ -105,11 +105,11 @@ class _CustomSnackBarWithValidatorState
               });
             },
       child: _isLoading
-          ? LoadingAnimationWidget.flickr(
-              size: 30,
-              rightDotColor: Color.fromARGB(255, 8, 38, 83)!,
-              leftDotColor: Colors.black)
-          : CustomButton(),
+          ? LoadingAnimationWidget.stretchedDots(
+              size: 38,
+              color: Colors.white,
+            )
+          : const CustomButton(),
     );
   }
 }

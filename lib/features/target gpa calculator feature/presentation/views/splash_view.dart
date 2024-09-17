@@ -13,6 +13,7 @@ class SplashView extends StatelessWidget {
         gradient: Styles.darkGradient,
       ),
       child: AnimatedSplashScreen(
+        duration: 2,
         splash: 'assets/icons/gpa.png',
         nextScreen: const HomeView(),
         splashTransition: SplashTransition.values[4],
